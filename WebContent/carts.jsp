@@ -6,6 +6,9 @@
 <head>
 <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="ajax.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 <script type="text/javascript">
 
 </script>
@@ -19,20 +22,30 @@
 List<Product> products=(List<Product>)request.getAttribute("carts");
 
 %>
-<table>
-<%
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Item id</th>
+      <th>Item Name</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  <%
 
 for(int i=0;i<products.size();i++){
 	%>
-<td>
-<%-- <%=products.get(i).getProductId()%> --%>
-</td>
-<td><%=products.get(i).getProductName() %>
-</td>
-<td>   <%-- <a href="Cart?id=<%=pds.get(i).getProductName() %>"/>Get one record</a> --%>
+    <tr>
+    
+      <td><%=products.get(i).getProductId() %></td>
+      <td><%=products.get(i).getProductName() %></td>
+    <td><a class="btn btn-danger" href="/AdJava/Cart?remove=<%=products.get(i).getProductName() %>">Danger</a></td> 
+    </tr>
+    
 
-</td>
 <%} %>
+</tbody>
 
 </table>
 
