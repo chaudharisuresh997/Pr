@@ -2,9 +2,9 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,20 +14,19 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.model.*;
 /**
  * Servlet implementation class CartController
  */
 
-@WebServlet("/Cart")
-public class CartController extends HttpServlet {
+@WebServlet("/ViewCart")
+public class ViewCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartController() {
+    public ViewCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,26 +38,18 @@ public class CartController extends HttpServlet {
 		HttpSession sessionObj=request.getSession();
 		com.google.gson.Gson gsonOb=new Gson();
 		
-		Type collectionType = new TypeToken<List<Product>>(){}.getType();	
 		
-	String s=request.getParameter("paramsMap");
-	
-	List<Product> cartObj=gsonOb.fromJson(s, collectionType);
-	if(sessionObj.getAttribute("cart")!=null)
+		
+	if(sessionObj.getAttribute("cart")!=null && request.getParameter("id")!=null)
 	{
 		List<Product> carts=(List<Product>) sessionObj.getAttribute("cart");
+	request.setAttribute("carts", carts);	
 		
-		carts.add(cartObj.get(0));
-		sessionObj.setAttribute("cart", carts);
 		
 	}
-	else
-	{
-	sessionObj.setAttribute("cart", cartObj);
-	}
-	PrintWriter pw=response.getWriter();
-	pw.println(s);
-	pw.close();
+	RequestDispatcher rd=request.getRequestDispatcher("/carts.jsp");
+	rd.forward(request, response);
+	
 	}
 
 	/**
