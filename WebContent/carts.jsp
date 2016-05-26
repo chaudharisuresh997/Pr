@@ -7,36 +7,7 @@
 <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="ajax.js"></script>
 <script type="text/javascript">
-function addToCart(itemName)
-{
-	var paramsMap=new Array();
-	var cart=new Object();
-	cart.productName=itemName;
-	cart.productId="1";
-	paramsMap.push(cart);
-	var url="http://localhost:7081/AdJava/Cart";
-	makeAjax(url, paramsMap, "GET");
-	}
-	
-	
-function makeAjax(url,paramsMap,method)
-{
-	$.ajax({
-		url : url,
-		data : "paramsMap="+JSON.stringify(paramsMap),
-		type : method,
-	   
-		success : function(response) {
-		
-			var a=JSON.parse(response);
-			document.getElementById("cart").innerHTML=a[0].productName;
-		},
-		error : function(xhr, status, error) {
-			alert("Error*****"+xhr.responseText);
-		}
-	}); 
-	
-	}
+
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -45,18 +16,21 @@ function makeAjax(url,paramsMap,method)
 <h1><div id="cart" style="float:right;height:33px;background-color:blue;color:red;width:300px;"></div></div></h1>
 <h1><div id="checkout" style="float:right;height:33px;background-color:black;color:red;width:300px;"></div></div></h1>
 <%
-List<Product> pds=(List<Product>)request.getAttribute("prods");
+List<Product> products=(List<Product>)request.getAttribute("carts");
 
 %>
 <table>
-<%for(int i=0;i<pds.size();i++){ %><td>
-<%=pds.get(i).getProductId() %>
+<%
+
+for(int i=0;i<products.size();i++){
+	%>
+<td>
+<%-- <%=products.get(i).getProductId()%> --%>
 </td>
-<td><%=pds.get(i).getProductName() %>
+<td><%=products.get(i).getProductName() %>
 </td>
 <td>   <%-- <a href="Cart?id=<%=pds.get(i).getProductName() %>"/>Get one record</a> --%>
-<a href="#" onClick="addToCart('<%=pds.get(i).getProductName() %>')"/>Get one record</a>
-<a href="/AdJava/ViewCart?id=" >View Cart</a>
+
 </td>
 <%} %>
 
