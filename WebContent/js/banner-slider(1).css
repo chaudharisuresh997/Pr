@@ -1,0 +1,95 @@
+/* Browser Resets for banner*/
+.flex-container a,
+.flexslider a,
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
+
+
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+/*.flexslider .slides img {max-width: 100%; }*/
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {  position: relative;   zoom: 1;}
+.flexslider .slides {zoom: 1;}
+.flexslider .slides > li {position: relative;}
+/* Suggested container for "Slide" animation setups. Can replace this with your own, if you wish */
+.flex-container {zoom: 1; position: relative;}
+
+/* Caption style */
+/* IE rgba() hack */
+.flex-caption {background:none; }
+.flex-caption { padding:25px; margin: 0 0 5px 0; text-align: left; position: absolute; right: 40px;bottom: 55px; color: #fff;  font-size: 30px; line-height: 35px; font-weight: 400; }
+.flex-caption span.text1 {text-shadow: 2px 2px #fff;font-size: 62px; color: #201d53; font-weight: 300; font-style: italic;line-height: 53px;}
+.flex-caption span.text2 {text-shadow: 2px 2px #fff;font-size: 62px; color: #201d53; font-weight: 300; font-style: italic; line-height: 70px;padding: 0 0 0 106px;}
+.flex-caption span.text3 { margin: 16px 0 0 104px; width:322px; height: 55px; text-align: center; text-transform: uppercase; padding: 8px 0 0 0; font-size:14px;display: block; color: #ffcd61; font-weight: 300; background: url(../images/banner-btn.png) no-repeat 0 0; overflow: hidden;}
+.flex-caption span.text3:hover { color: #fff;}
+/* Di.flex-captionrection Nav */
+.flex-direction-nav { height: 0; }
+.flex-direction-nav a {width: 50px; height:90px; margin: -13px 0 0; display: block; position: absolute; top: 40%; cursor: pointer; text-indent: -999em;}
+.flex-direction-nav .flex-next {right: 0px;top: 5%; opacity: 0.7; background:url(../images/slider-nxt.png) no-repeat; z-index:999;.flex-direction-nav .flex-prev
+	  
+}
+.flex-direction-nav .flex-next:hover,.flex-direction-nav .flex-prev:hover
+{
+	opacity: 10;
+}
+.flex-direction-nav .flex-prev {left: 0px;top: 5%;opacity: 0.7;   background:url(../images/slider-pre.png) no-repeat; z-index:999;
+ }
+.flex-direction-nav .flex-disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
+
+/* Control Nav */
+.flex-control-nav {
+	width: 56%;
+	position: fixed;
+	bottom: 20px;
+	left: 0px;
+	text-align: center;
+	z-index: 999; 
+	
+	
+}
+.flex-control-nav li {margin: 0 0 0 5px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-nav li:first-child {margin: 0;}
+.flex-control-nav a {width: 17px; height: 17px; display: block;background: url(../images/flex-control-nav-bg.png); /*background: url(../images/prev-icon.png) no-repeat;*/ cursor: pointer; text-indent: -999em;}
+.flex-control-nav a:hover {background-position: 0 -13px;}
+.flex-control-nav a.flex-active {background-position: 0 -26px; cursor: default; background:url(../images/flex-control-nav-bg-active.png);}
+
+
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+strong {font-weight: 600;}
+em {font-style: italic;}
+
+#container {width: 100%; max-width: 100%; margin: 0 auto;}
+
+#banner-main{width:100%;height:100%;float:left;margin:0px 0 0 0;z-index: 1;}
+#banner-main .banner{width:100%;height:100%;float:left; text-align:center;}
+#banner-main .banner ul{margin:0px;padding:0px}
+#banner-main .banner li .img-middle{width:100%;height:100%;vertical-align:middle;text-align:center}
+#banner-main .banner li .img-middle img{width:100%;height:100%}
+#banner-main .banner .widget-title{display:none}
